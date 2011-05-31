@@ -1,1 +1,1 @@
-lopakadelp - cookbook for chef
+lopakadelp - cookbook/recipies for chef
