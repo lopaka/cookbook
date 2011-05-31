@@ -1,12 +1,12 @@
-version=1.8.1
-hardware=i686
-
+remote_file "/tmp/mongodb-linux-i686-1.8.1.tgz" do
+    source "http://fastdl.mongodb.org/linux/mongodb-linux-i686-1.8.1.tgz"
+    mode "0644"
+end
 
 execute "tar" do
-    command "tar xzf $RS_ATTACH_DIR/mongodb-linux-${hardware}-${version}.tgz"
+    cwd /tmp
+    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
     action :run
 end
 
-
-include_recipe "db_mysql::install_mysql"
 
