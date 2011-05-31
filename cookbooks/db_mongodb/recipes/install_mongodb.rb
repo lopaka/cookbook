@@ -3,6 +3,6 @@
 #--------------------
 
 content_dir = "/tmp/mongodb-linux-i686-1.8.1"
-`cp #{content_dir}/* /usr/local/bin/`
+`cp #{content_dir}/bin/* /usr/local/bin/`
 `rm -rf #{content_dir}`
 
