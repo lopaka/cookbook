@@ -6,4 +6,5 @@ long_description "Installs/configures a MongoDB server."
 version          "0.0.1"
 
 recipe  "db_mongodb::default", "untars mongodb."
+recipe  "db_mongodb::install_mongodb", "installs mongodb into /usr/local/bin/"
 

@@ -16,7 +16,8 @@
   "recommendations": {
   },
   "recipes": {
-    "db_mongodb::default": "untars mongodb."
+    "db_mongodb::default": "untars mongodb.",
+    "db_mongodb::install_mongodb": "installs mongodb into /usr/local/bin/"
   },
   "groupings": {
   },

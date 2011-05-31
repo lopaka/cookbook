@@ -1,13 +1,12 @@
-tarball = "mongodb-linux-i686-1.8.1.tgz"
+#--------------------
+# default recipe will download and untar monogodb into /tmp dir
+#--------------------
 
-#remote_file "/tmp/#{tarball}" do
-#    source "http://fastdl.mongodb.org/linux/#{tarball}"
-#    mode "0644"
-#end
+tarball = "mongodb-linux-i686-1.8.1.tgz"
 
 execute "wget" do
     cwd "/tmp"
-    command "wget http://fastdl.mongodb.org/linux/#{tarball}"
+    command "wget -q http://fastdl.mongodb.org/linux/#{tarball}"
     creates "/tmp/#{tarball}"
     action :run
 end

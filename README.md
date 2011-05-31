@@ -1,1 +1,0 @@
-lopakadelp - cookbook for chef
