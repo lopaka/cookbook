@@ -32,7 +32,7 @@ end
 #--------------------
 # untar tarball
 #--------------------
-`tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz`
+`tar xzvf /tmp/mongodb-linux-i686-1.8.1.tgz`
 ###execute "tar" do
 ###    cwd "/tmp"
 ###    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
