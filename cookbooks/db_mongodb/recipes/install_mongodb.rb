@@ -8,9 +8,9 @@ content_dir = "/tmp/mongodb-linux-i686-1.8.1"
 #####data_dir = "/var/mongodb/data"
 #####conf_file = "/etc/mongod.conf"
 #####log_file = "/var/log/mongod.log"
-data_dir =  "#{node["db_mongodb"]["data_dir"]}"
-conf_file = "#{node["db_mongodb"]["conf_file"]}"
-log_file =  "#{node["db_mongodb"]["log_file"]}"
+data_dir =  "#{node[:db_mongodb][:data_dir]}"
+conf_file = "#{node[:db_mongodb][:conf_file]}"
+log_file =  "#{node[:db_mongodb][:log_file]}"
 
 
 #--------------------
