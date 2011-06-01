@@ -3,7 +3,7 @@
 # and create need dirs and init scripts
 #--------------------
 
-content_dir = "/tmp/mongodb-linux-i686-1.8.1"
+content_dir = "#{node[:db_mongodb][:content_dir]}"
 
 data_dir =  "#{node[:db_mongodb][:data_dir]}"
 conf_file = "#{node[:db_mongodb][:conf_file]}"
