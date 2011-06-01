@@ -16,9 +16,7 @@
   "recommendations": {
   },
   "recipes": {
-    "db_mongodb::clean_source": "cleans source files",
-    "db_mongodb::default": "downloads and untars mongodb.",
-    "db_mongodb::install_mongodb": "installs mongodb into /usr/local/bin/"
+    "db_mongodb::default": "installs mongodb"
   },
   "groupings": {
   },
