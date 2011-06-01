@@ -12,17 +12,6 @@ log_file =  "#{node[:db_mongodb][:log_file]}"
 
 
 #--------------------
-# untar tarball
-#--------------------
-
-execute "tar" do
-    cwd "/tmp"
-    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
-    action :run
-end
-
-
-#--------------------
 # create user:group mongo:mongo
 #--------------------
 
@@ -38,6 +27,16 @@ user "mongo" do
     shell "/bin/sh"
 end    
 
+
+#--------------------
+# untar tarball
+#--------------------
+
+execute "tar" do
+    cwd "/tmp"
+    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
+    action :run
+end
 
 
 #--------------------
