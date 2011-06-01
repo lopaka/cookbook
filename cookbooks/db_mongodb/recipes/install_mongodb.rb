@@ -35,16 +35,6 @@ end
 
 
 #--------------------
-# remove content_dir
-#--------------------
-
-directory "#{content_dir}" do
-    recursive true
-    action :delete
-end
-
-
-#--------------------
 # create data dir
 #--------------------
 
