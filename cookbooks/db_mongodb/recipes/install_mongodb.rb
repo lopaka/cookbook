@@ -5,9 +5,6 @@
 
 content_dir = "/tmp/mongodb-linux-i686-1.8.1"
 
-#####data_dir = "/var/mongodb/data"
-#####conf_file = "/etc/mongod.conf"
-#####log_file = "/var/log/mongod.log"
 data_dir =  "#{node[:db_mongodb][:data_dir]}"
 conf_file = "#{node[:db_mongodb][:conf_file]}"
 log_file =  "#{node[:db_mongodb][:log_file]}"
@@ -28,6 +25,7 @@ directory "#{content_dir}" do
     recursive true
     action :delete
 end
+
 
 #--------------------
 # create data dir
@@ -50,7 +48,7 @@ file "#{conf_file}" do
     owner "root"
     group "root"
     mode "0755"
-    content "# #{conf_file} file"
+    content "# #{conf_file} file\n"
     not_if {File.exists?("#{conf_file}")}
     action :create
 end
@@ -78,6 +76,6 @@ end
 # start the service
 #--------------------
 
-#service "mongod" go
-#    action :start
-#end
+service "mongod" do
+    action [ :enable, :start ]
+end
