@@ -4,9 +4,9 @@
 
 tarball = "mongodb-linux-i686-1.8.1.tgz"
 
-cookbook_file "/tmp/#{tarball}" do
+cookbook_file "/tmp/mongodb-linux-i686-1.8.1.tgz" do
     backup false
-    source "default/#{tarball}"
+    source "mongodb-linux-i686-1.8.1.tgz"
 end
 
 execute "tar" do
