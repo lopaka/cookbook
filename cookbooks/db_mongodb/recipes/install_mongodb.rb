@@ -63,10 +63,11 @@ template "/etc/init.d/mongodb" do
     owner "root"
     group "root"
     variables(
-        :data_dir => #{data_dir},
-        :conf_file => #{conf_file},
-        :log_file => #{log_file}
+        :data_dir => "#{data_dir}",
+        :conf_file => "#{conf_file}",
+        :log_file => "#{log_file}"
     )
+    action :create_if_missing
 end
 
 
