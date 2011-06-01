@@ -5,7 +5,8 @@
 
 content_dir = "/tmp/mongodb-linux-i686-1.8.1"
 
-data_dir = "/var/mongodb/data"
+##data_dir = "/var/mongodb/data"
+data_dir = $INPUT_DATADIR
 conf_file = "/etc/mongod.conf"
 log_file = "/var/log/mongod.log"
 
