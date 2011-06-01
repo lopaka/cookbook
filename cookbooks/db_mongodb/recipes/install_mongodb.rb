@@ -18,7 +18,7 @@ log_file =  "#{node[:db_mongodb][:log_file]}"
 execute "tar" do
     cwd "/tmp"
     command "tar xzf /tmp/#{tarball}"
-    log "#{tarball}"
+    put "#{tarball}"
     action :run
 end
 
