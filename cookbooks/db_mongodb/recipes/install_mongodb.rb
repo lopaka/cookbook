@@ -58,7 +58,7 @@ end
 #--------------------
 
 template "/etc/init.d/mongodb" do
-    source "init-mysql.erb"
+    source "init-mongod.erb"
     mode 0755
     owner "root"
     group "root"
