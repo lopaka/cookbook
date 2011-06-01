@@ -2,7 +2,7 @@
 # default recipe will download monogodb into /tmp dir
 #--------------------
 
-tarball = "${node[:db_mongodb][:tarball]}"
+tarball = "#{node[:db_mongodb][:tarball]}"
 
 # appears to be a bug in using cookbook_file in chef 0.8
 # going back to wget
