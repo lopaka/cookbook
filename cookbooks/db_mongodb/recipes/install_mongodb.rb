@@ -48,6 +48,19 @@ end
 
 
 #--------------------
+# create log file since running as 'mongo' will not allow
+# creation of file on centos in /var/log
+#--------------------
+
+file "#{log_file}" do
+    owner "mongo"
+    group "mongo"
+    mode "0755"
+    action :create
+end
+
+
+#--------------------
 # create simple conf file if it does not already exists
 #--------------------
 
