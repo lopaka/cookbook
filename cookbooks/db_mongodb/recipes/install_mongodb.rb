@@ -3,11 +3,23 @@
 # and create need dirs and init scripts
 #--------------------
 
-content_dir = "/tmp/mongodb-linux-i686-1.8.1"
+tarball = "#{node[:db_mongodb][:tarball]}"
+content_dir = "/tmp/#{tarball}"
 
 data_dir =  "#{node[:db_mongodb][:data_dir]}"
 conf_file = "#{node[:db_mongodb][:conf_file]}"
 log_file =  "#{node[:db_mongodb][:log_file]}"
+
+
+#--------------------
+# untar tarball
+#--------------------
+
+execute "tar" do
+    cwd "/tmp"
+    command "tar xzf /tmp/#{tarball}"
+    action :run
+end
 
 
 #--------------------
