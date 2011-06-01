@@ -1,0 +1,53 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:     mongodb
+# Required-Sart:
+# Required-Stop:
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description: mongodb
+# Description: mongo db server
+### END INIT INFO
+
+
+PROGRAM=/usr/local/bin/mongod
+DBPATH=<%= @data_dir %>
+LOGPATH=<%= @log_file %>
+CONFFILE=<%= @conf_file %>
+
+
+PIDFILE=/var/run/mongod.pid
+MONGODPID=`pgrep -P 1 mongod`
+
+test -x $PROGRAM || exit 0
+
+case "$1" in
+    start)
+        echo "Starting MongoDB server"
+        $PROGRAM --fork --quiet --pidfilepath ${PIDFILE} --dbpath ${DBPATH} --config ${CONFFILE} --logpath ${LOGPATH}
+        ;;
+    stop)
+        echo "Stopping MongoDB server"
+        if [ ! -z "$MONGODPID" ]; then
+            kill -15 $MONGODPID
+        fi
+        ;;
+    status)
+        if [ "$MONGODPID" = "" ]; then
+            echo "not running"
+        else
+            if [ "$MONGODPID" = `cat $PIDFILE` ]; then
+                echo "server running pid = $MONGODPID"
+            else
+                echo "ERROR"
+                exit 1
+            fi
+        fi    
+        ;;
+    *)
+        echo "Usage: /etc/init.d/mongodb {start|stop|status}"
+        exit 1
+esac
+
+exit 0
