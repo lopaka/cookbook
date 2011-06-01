@@ -11,6 +11,24 @@ log_file =  "#{node[:db_mongodb][:log_file]}"
 
 
 #--------------------
+# create user:group mongo:mongo
+#--------------------
+
+group "mongo" do
+    gid "1000"
+end
+
+user "mongo" do
+    comment "MongoDB user"
+    uid "1000"
+    gid "mongo"
+    home "/home/mongo"
+    shell "/bin/sh"
+end    
+
+
+
+#--------------------
 # copy content of bin
 #--------------------
 
@@ -32,8 +50,8 @@ end
 #--------------------
 
 directory "#{data_dir}" do
-    owner "root"
-    group "root"
+    owner "mongo"
+    group "mongo"
     mode "0700"
     recursive true
     action :create
@@ -45,8 +63,8 @@ end
 #--------------------
 
 file "#{conf_file}" do
-    owner "root"
-    group "root"
+    owner "mongo"
+    group "mongo"
     mode "0755"
     content "# #{conf_file} file\n"
     not_if {File.exists?("#{conf_file}")}
