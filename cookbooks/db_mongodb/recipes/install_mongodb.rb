@@ -15,7 +15,7 @@ log_file =  "#{node[:db_mongodb][:log_file]}"
 #--------------------
 
 group "mongo" do
-    gid "1000"
+    gid 1000
 end
 
 user "mongo" do
