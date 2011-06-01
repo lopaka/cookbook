@@ -32,13 +32,13 @@ end
 #--------------------
 # untar tarball
 #--------------------
-
-execute "tar" do
-    cwd "/tmp"
-    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
-    timeout 10
-    action :run
-end
+`tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz`
+###execute "tar" do
+###    cwd "/tmp"
+###    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
+###    timeout 10
+###    action :run
+###end
 
 
 #--------------------
