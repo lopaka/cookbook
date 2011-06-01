@@ -21,10 +21,10 @@ log_file = "/var/log/mongod.log"
 # remove content_dir
 #--------------------
 
-directory "#{content_dir}" do
-    recursive true
-    action :delete
-end
+####directory "#{content_dir}" do
+####    recursive true
+####    action :delete
+####end
 
 #--------------------
 # create data dir
