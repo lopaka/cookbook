@@ -3,8 +3,6 @@
 # and create need dirs and init scripts
 #--------------------
 
-tarball = "#{node[:db_mongodb][:tarball]}"
-
 content_dir = "/tmp/mongodb-linux-i686-1.8.1"
 
 data_dir =  "#{node[:db_mongodb][:data_dir]}"
@@ -27,18 +25,6 @@ user "mongo" do
     home "/home/mongo"
     shell "/bin/sh"
 end    
-
-
-#--------------------
-# untar tarball
-#--------------------
-`tar xzvf /tmp/mongodb-linux-i686-1.8.1.tgz`
-###execute "tar" do
-###    cwd "/tmp"
-###    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
-###    timeout 10
-###    action :run
-###end
 
 
 #--------------------
