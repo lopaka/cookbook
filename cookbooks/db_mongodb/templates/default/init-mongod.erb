@@ -17,7 +17,6 @@ LOGPATH=<%= @log_file %>
 CONFFILE=<%= @conf_file %>
 
 
-PIDFILE=/var/run/mongod.pid
 MONGODPID=`pgrep -P 1 mongod`
 
 test -x $PROGRAM || exit 0
@@ -25,7 +24,7 @@ test -x $PROGRAM || exit 0
 case "$1" in
     start)
         echo "Starting MongoDB server"
-        $PROGRAM --fork --quiet --pidfilepath ${PIDFILE} --dbpath ${DBPATH} --config ${CONFFILE} --logpath ${LOGPATH}
+        su mongo -c "$PROGRAM --fork --quiet --dbpath ${DBPATH} --config ${CONFFILE} --logpath ${LOGPATH} --logappend"
         ;;
     stop)
         echo "Stopping MongoDB server"
@@ -37,12 +36,7 @@ case "$1" in
         if [ "$MONGODPID" = "" ]; then
             echo "not running"
         else
-            if [ "$MONGODPID" = `cat $PIDFILE` ]; then
-                echo "server running pid = $MONGODPID"
-            else
-                echo "ERROR"
-                exit 1
-            fi
+            echo "server running pid = $MONGODPID"
         fi    
         ;;
     *)
