@@ -24,10 +24,10 @@ log_file =  "#{node[:db_mongodb][:log_file]}"
 # remove content_dir
 #--------------------
 
-####directory "#{content_dir}" do
-####    recursive true
-####    action :delete
-####end
+directory "#{content_dir}" do
+    recursive true
+    action :delete
+end
 
 #--------------------
 # create data dir
