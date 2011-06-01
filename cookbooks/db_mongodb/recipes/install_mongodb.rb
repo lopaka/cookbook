@@ -17,8 +17,7 @@ log_file =  "#{node[:db_mongodb][:log_file]}"
 
 execute "tar" do
     cwd "/tmp"
-    command "tar xzf /tmp/#{tarball}"
-    puts "#{tarball}"
+    command "tar xzf /tmp/mongodb-linux-i686-1.8.1.tgz"
     action :run
 end
 
