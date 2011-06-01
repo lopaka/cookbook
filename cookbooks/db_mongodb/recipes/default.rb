@@ -6,7 +6,7 @@ tarball = "mongodb-linux-i686-1.8.1.tgz"
 
 cookbook_file "/tmp/#{tarball}" do
     backup false
-    source "#{tarball}"
+    source "default/#{tarball}"
 end
 
 execute "tar" do
