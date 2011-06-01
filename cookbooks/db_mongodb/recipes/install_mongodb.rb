@@ -4,6 +4,7 @@
 #--------------------
 
 tarball = "#{node[:db_mongodb][:tarball]}"
+
 content_dir = "/tmp/mongodb-linux-i686-1.8.1"
 
 data_dir =  "#{node[:db_mongodb][:data_dir]}"
