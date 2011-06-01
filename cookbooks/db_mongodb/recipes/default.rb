@@ -6,9 +6,9 @@
 
 tarball     = "#{node[:db_mongodb][:tarball]}"
 content_dir = "#{node[:db_mongodb][:content_dir]}"
-data_dir    =  "#{node[:db_mongodb][:data_dir]}"
+data_dir    = "#{node[:db_mongodb][:data_dir]}"
 conf_file   = "#{node[:db_mongodb][:conf_file]}"
-log_file    =  "#{node[:db_mongodb][:log_file]}"
+log_file    = "#{node[:db_mongodb][:log_file]}"
 
 execute "wget" do
     cwd "/tmp"
@@ -49,7 +49,11 @@ end
 # copy content of bin
 #--------------------
 
-`cp #{content_dir}/bin/* /usr/local/bin/`
+execute "cp" do
+    cwd "/tmp"
+    command "cp #{content_dir}/bin/* /usr/local/bin/"
+    action :run
+end
 
 
 #--------------------
