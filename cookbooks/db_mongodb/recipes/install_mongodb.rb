@@ -58,7 +58,7 @@ end
 # create start up script
 #--------------------
 
-template "/etc/init.d/mongodb" do
+template "/etc/init.d/mongod" do
     source "init-mongod.erb"
     mode 0755
     owner "root"
