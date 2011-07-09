@@ -1,0 +1,142 @@
+{
+    "recommendations": {
+    },
+    "maintainer": "RightScale, Inc.",
+    "attributes": {
+      "tomcat/code": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "hash",
+        "recipes": [
+
+        ],
+        "display_name": "Tomcat Application Code"
+      },
+      "tomcat/code/branch": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "master",
+        "type": "string",
+        "recipes": [
+          "app_tomcat::do_update_code",
+          "app_tomcat::do_db_restore",
+          "app_tomcat::default"
+        ],
+        "description": "The name of the branch within the git repository where the application code should be pulled from.",
+        "display_name": "Repository Branch"
+      },
+      "tomcat/code/url": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "string",
+        "recipes": [
+          "app_tomcat::do_update_code",
+          "app_tomcat::do_db_restore",
+          "app_tomcat::default"
+        ],
+        "description": "Specify the URL location of the repository that contains the application code. Ex: git://github.com/mysite/myapp.git",
+        "display_name": "Repository URL"
+      },
+      "tomcat/modules_list": {
+        "required": "optional",
+        "calculated": false,
+        "discription": "An optional list of Tomcat modules to install",
+        "choice": [
+
+        ],
+        "type": "array",
+        "recipes": [
+          "app_tomcat::default"
+        ],
+        "display_name": "Tomcat modules"
+      },
+      "tomcat/db_schema_name": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "string",
+        "recipes": [
+          "app_tomcat::setup_db_connection"
+        ],
+        "description": "Enter the name of the MySQL database schema to which applications will connect.  The database schema was created when the initial database was first set up.  This input will be used to set the application server's database config file so that applications can connect to the correct schema within the database.  This input is also used for MySQL dump backups in order to determine which schema is getting backed up.  Ex: mydbschema",
+        "display_name": "Database Schema Name"
+      },
+      "tomcat/code/credentials": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "",
+        "type": "string",
+        "recipes": [
+          "app_tomcat::do_update_code",
+          "app_tomcat::do_db_restore",
+          "app_tomcat::default"
+        ],
+        "description": "The private SSH key of the git repository.",
+        "display_name": "Repository Credentials"
+      },
+      "tomcat": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "hash",
+        "recipes": [
+
+        ],
+        "display_name": "Tomcat Application Settings"
+      }
+    },
+    "suggestions": {
+    },
+    "recipes": {
+      "app_tomcat::setup_tomcat_application_vhost": "Setup application vhost on port 8000",
+      "app_tomcat::setup_db_connection": "Setup MySQL database db.tomcat connection file.",
+      "app_tomcat::do_update_code": "Update application source files from the remote repository.",
+      "app_tomcat::default": "Installs the tomcat application server."
+    },
+    "dependencies": {
+      "repo_git_pull(url, branch, dest, cred)": [
+
+      ],
+      "db_mysql": [
+
+      ],
+      "web_apache": [
+
+      ],
+      "repo_git": [
+
+      ]
+    },
+    "maintainer_email": "support@rightscale.com",
+    "conflicting": {
+    },
+    "providing": {
+    },
+    "license": "Apache v2.0",
+    "platforms": {
+    },
+    "version": "0.0.1",
+    "replacing": {
+    },
+    "name": "app_tomcat",
+    "groupings": {
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES: \n\n= USAGE:\n\n",
+    "description": "Installs the tomcat application server."
+  }
