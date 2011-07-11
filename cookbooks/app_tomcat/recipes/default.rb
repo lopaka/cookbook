@@ -12,20 +12,19 @@
 #end
 
 # TEST - currently only for centos
-case platform
+case node[:platform]
 when "centos","fedora","suse"
-  package "eclipse-ecj" do
-    action:install
-  end
   
-  # ln -s /usr/share/java/eclipse-ecj.jar /usr/share/java/ecj.jar
-  link "/usr/share/java/ecj.jar" do
-    to "/usr/share/java/eclipse-ecj.jar"
-  end
-  
-  [ "tomcat6","tomcat6-admin-webapps","tomcat6-webapps","tomcat-native","mysql-connector-java" ].each do |p|
+  # [ "tomcat6","tomcat6-admin-webapps","tomcat6-webapps","tomcat-native","mysql-connector-java" ].each do |p|
+  node[:tomcat][:package_dependencies].each do |p|
     log "installing #{p}"
     package p
+  end
+
+  # ln -sf /usr/share/java/eclipse-ecj.jar /usr/share/java/ecj.jar
+  # todo: if /usr/share/java/ecj.jar exists delete first
+  link "/usr/share/java/ecj.jar" do
+    to "/usr/share/java/eclipse-ecj.jar"
   end
   
   execute "alternatives" do
@@ -35,9 +34,29 @@ when "centos","fedora","suse"
   
   ## Link mysql-connector plugin to Tomcat6 lib
   # ln -sf /usr/share/java/mysql-connector-java.jar /usr/share/tomcat6/lib/mysql-connector-java.jar
+  # todo: if /usr/share/tomcat6/lib/mysql-connector-java.jar exists delete it first
   link "/usr/share/tomcat6/lib/mysql-connector-java.jar" do
     to "/usr/share/java/mysql-connector-java.jar"
   end
+
+
+  # Moving tomcat logs to mnt
+  if ! File.directory?("/mnt/log/tomcat6") 
+    directory "/mnt/log/tomcat6" do
+      owner "tomcat"
+      group "tomcat"
+      mode "0755"
+      action :create
+      recursive true
+    end
+    directory "/var/log/tomcat6" do
+      action :delete
+      recursive true
+    end
+    link "/var/log/tomcat6" do
+      to "/mnt/log/tomcat6"
+    end
+  end
 else
-  set[:db_mysql][:socket] = "/var/run/mysqld/mysqld.sock"
+    log "nothing done yet for non centos"
 end
