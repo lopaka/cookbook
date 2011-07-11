@@ -14,19 +14,22 @@
 # TEST - currently only for centos
 case node[:platform]
 when "centos","fedora","suse"
-  
-  # [ "tomcat6","tomcat6-admin-webapps","tomcat6-webapps","tomcat-native","mysql-connector-java" ].each do |p|
+
   node[:tomcat][:package_dependencies].each do |p|
     log "installing #{p}"
     package p
+
+    # eclipse-ecj and symlink must be installed FIRST
+    if p=="eclipse-ecj"
+      # ln -sf /usr/share/java/eclipse-ecj.jar /usr/share/java/ecj.jar
+      # todo: if /usr/share/java/ecj.jar exists delete first
+      link "/usr/share/java/ecj.jar" do
+        to "/usr/share/java/eclipse-ecj.jar"
+      end
+    end
+
   end
 
-  # ln -sf /usr/share/java/eclipse-ecj.jar /usr/share/java/ecj.jar
-  # todo: if /usr/share/java/ecj.jar exists delete first
-  link "/usr/share/java/ecj.jar" do
-    to "/usr/share/java/eclipse-ecj.jar"
-  end
-  
   execute "alternatives" do
     command "alternatives --auto java"
     action :run
