@@ -1,5 +1,5 @@
-# Cookbook Name:: app_php
-# Recipe:: setup_php_application_vhost
+# Cookbook Name:: app_tomcat
+# Recipe:: setup_tomcat_application_vhost
 #
 # Copyright (c) 2011 RightScale Inc
 #
@@ -41,14 +41,14 @@ template "#{node[:apache][:dir]}/ports.conf" do
   notifies :restart, resources(:service => "apache2")
 end
 
-# == Configure apache vhost for PHP
+# == Configure apache vhost for Tomcat
 #
-#web_app node[:php][:application_name] do
+#web_app node[:tomcat][:application_name] do
 web_app node[:web_apache][:application_name] do
   template "apache.conf.erb"
   docroot node[:web_apache][:docroot]
   vhost_port "8000"
-  server_name node[:php][:server_name]
+  server_name node[:tomcat][:server_name]
   cookbook "web_apache"
   notifies :restart, resources(:service => "apache2")
 end
