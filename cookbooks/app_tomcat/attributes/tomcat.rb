@@ -25,8 +25,9 @@ when "centos","fedora","suse"
                                          "tomcat6-admin-webapps",\
                                          "tomcat6-webapps",\
                                          "tomcat-native",\
+                                         "mod_jk-ap20",\
                                          "mysql-connector-java"]
-  set[:tomcat][:module_dependencies] = [ "proxy", "proxy_http","mod_jk" ]
+  set[:tomcat][:module_dependencies] = [ "proxy", "proxy_http", "jk" ]
   set_unless[:tomcat][:app_user] = "apache"
   set[:db_mysql][:socket] = "/var/lib/mysql/mysql.sock"
 end

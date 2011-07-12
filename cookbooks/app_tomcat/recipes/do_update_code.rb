@@ -1,4 +1,4 @@
-# Cookbook Name:: app_php
+# Cookbook Name:: app_tomcat
 # Recipe:: do_update_code
 #
 # Copyright (c) 2011 RightScale Inc
@@ -24,24 +24,30 @@
 
 
 # Check that we have the required attributes set
-raise "You must provide a URL to your application code repository" if ("#{node[:php][:code][:url]}" == "") 
-raise "You must provide a destination for your application code." if ("#{node[:web_apache][:docroot]}" == "") 
+
+raise "You must provide a URL to your application code repository" if node[:tomcat][:code][:url] == "" 
+raise "You must provide a destination for your application code." if node[:web_apache][:docroot] == ""
 
 # Warn about missing optional attributes
-Chef::Log.warn("WARNING: You did not provide credentials for your code repository -- assuming public repository.") if ("#{node[:php][:code][:credentials]}" == "") 
-Chef::Log.info("You did not provide branch informaiton -- setting to default.") if ("#{node[:php][:code][:branch]}" == "") 
+Chef::Log.warn("WARNING: You did not provide credentials for your code repository -- assuming public repository.") if ("#{node[:tomcat][:code][:credentials]}" == "") 
+Chef::Log.info("You did not provide branch informaiton -- setting to default.") if ("#{node[:tomcat][:code][:branch]}" == "") 
 
 # grab application source from remote repository
 repo_git_pull "Get Repository" do
-  url node[:php][:code][:url]
-  branch node[:php][:code][:branch] 
+  url node[:tomcat][:code][:url]
+  branch node[:tomcat][:code][:branch] 
   dest node[:web_apache][:docroot]
-  cred node[:php][:code][:credentials]
+  cred node[:tomcat][:code][:credentials]
 end
 
 # == Set code ownership 
-bash "chown_home" do
-  code <<-EOH
-    chown -R #{node[:php][:app_user]}:#{node[:php][:app_user]} #{node[:web_apache][:docroot]}
-  EOH
+#bash "chown_home" do
+#  code <<-EOH
+#    chown -R #{node[:tomcat][:app_user]}:#{node[:tomcat][:app_user]} #{node[:web_apache][:docroot]}
+#  EOH
+#end
+directory node[:web_apache][:docroot] do
+  owner node[:tomcat][:app_user]
+  group node[:tomcat][:app_user]
+  recursive true
 end

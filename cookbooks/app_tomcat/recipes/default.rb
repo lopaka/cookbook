@@ -60,6 +60,14 @@ when "centos","fedora","suse"
       to "/mnt/log/tomcat6"
     end
   end
+
+
+  node[:tomcat][:module_dependencies].each do |mod|
+    log "installing apache module #{mod}"
+    apache_module mod
+  end
+
+
 else
     log "nothing done yet for non centos"
 end
