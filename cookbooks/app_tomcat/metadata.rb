@@ -40,7 +40,7 @@ attribute "tomcat/code",
 attribute "tomcat/code/url",
   :display_name => "Repository URL",
   :description => "Specify the URL location of the repository that contains the application code. Ex: git://github.com/mysite/myapp.git",
-  :required => false,
+  :required => true,
   :recipes => [ "app_tomcat::do_update_code", "app_tomcat::do_db_restore",  "app_tomcat::default" ]
 
 attribute "tomcat/code/credentials",

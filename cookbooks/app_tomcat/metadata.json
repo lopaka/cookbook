@@ -32,7 +32,7 @@
         "display_name": "Repository Branch"
       },
       "tomcat/code/url": {
-        "required": "optional",
+        "required": "required",
         "calculated": false,
         "choice": [
 
