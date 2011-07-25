@@ -11,6 +11,7 @@
 #  apache_module mod
 #end
 
+# TODO - changes if not centos (ie ubuntu)
 # TEST - currently only for centos
 case node[:platform]
 when "centos","fedora","suse"
@@ -27,7 +28,6 @@ when "centos","fedora","suse"
         to "/usr/share/java/eclipse-ecj.jar"
       end
     end
-
   end
 
   execute "alternatives" do
@@ -40,6 +40,13 @@ when "centos","fedora","suse"
   # todo: if /usr/share/tomcat6/lib/mysql-connector-java.jar exists delete it first
   link "/usr/share/tomcat6/lib/mysql-connector-java.jar" do
     to "/usr/share/java/mysql-connector-java.jar"
+  end
+
+  ## "Linking RightImage JAVA_HOME to what Tomcat6 expects to be..."
+  # ln -nfs $java_home $tc_java_home
+  # ln -nfs /usr/java/default /usr/lib/jvm/java
+  link "/usr/lib/jvm/java" do
+    to "/usr/java/default"
   end
 
 
@@ -66,7 +73,6 @@ when "centos","fedora","suse"
     log "installing apache module #{mod}"
     apache_module mod
   end
-
 
 else
     log "nothing done yet for non centos"
