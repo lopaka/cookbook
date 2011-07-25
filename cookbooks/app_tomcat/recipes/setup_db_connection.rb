@@ -22,20 +22,15 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# == Setup PHP Database Connection
+# == Setup tomcat Database Connection
 #
-# Make sure config dir exists
-directory File.join(node[:web_apache][:docroot], "config") do
-  recursive true 
-  owner node[:tomcat][:app_user]
-  group node[:tomcat][:app_user]
-end
 
 # Tell MySQL to fill in our connection template
-db_mysql_connect_app File.join(node[:web_apache][:docroot], "config", "db.php") do
-  template "db.php.erb"
-  cookbook "app_php"
-  database node[:php][:db_schema_name]
-  owner node[:php][:app_user]
-  group node[:php][:app_user]
-end
+# TODO - create connection template
+#db_mysql_connect_app File.join(node[:web_apache][:docroot], "config", "db.php") do
+#  template "db.php.erb"
+#  cookbook "app_php"
+#  database node[:php][:db_schema_name]
+#  owner node[:php][:app_user]
+#  group node[:php][:app_user]
+#end

@@ -5,7 +5,6 @@ description      "Installs the tomcat application server."
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-depends "web_apache"
 depends "db_mysql"
 depends "repo_git"
 depends "repo_git_pull(url, branch, dest, cred)"

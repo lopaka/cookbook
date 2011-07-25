@@ -20,14 +20,15 @@ case platform
 when "ubuntu", "debian"
   set[:db_mysql][:socket] = "/var/run/mysqld/mysqld.sock"
 when "centos","fedora","suse"
+  #"mod_jk-ap20"
   set[:tomcat][:package_dependencies] = ["eclipse-ecj",\
                                          "tomcat6",\
                                          "tomcat6-admin-webapps",\
                                          "tomcat6-webapps",\
                                          "tomcat-native",\
-                                         "mod_jk-ap20",\
                                          "mysql-connector-java"]
-  set[:tomcat][:module_dependencies] = [ "proxy", "proxy_http", "jk" ]
-  set_unless[:tomcat][:app_user] = "apache"
+#  set[:tomcat][:module_dependencies] = [ "proxy", "proxy_http", "jk" ]
+  set[:tomcat][:module_dependencies] = [ "proxy", "proxy_http" ]
+  set_unless[:tomcat][:app_user] = "tomcat"
   set[:db_mysql][:socket] = "/var/lib/mysql/mysql.sock"
 end

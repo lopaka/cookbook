@@ -7,9 +7,6 @@
 #  package p
 #end
 #
-#node[:tomcat][:module_dependencies].each do |mod|
-#  apache_module mod
-#end
 
 # TODO - changes if not centos (ie ubuntu)
 # TEST - currently only for centos
@@ -68,11 +65,6 @@ when "centos","fedora","suse"
     end
   end
 
-
-  node[:tomcat][:module_dependencies].each do |mod|
-    log "installing apache module #{mod}"
-    apache_module mod
-  end
 
 else
     log "nothing done yet for non centos"
