@@ -70,7 +70,7 @@ when "centos","fedora","suse"
   
   tomcat_conf_files = [ '/etc/tomcat6/tomcat6.conf', '/etc/tomcat6/server.xml' ]
   tomcat_conf_files.each do |conf_file|
-    file_text = File.read(conf_file)
+    file_text = IO.read(conf_file)
     file_text.gsub(/8080/, "8000")
     file conf_file do
         owner "root"
