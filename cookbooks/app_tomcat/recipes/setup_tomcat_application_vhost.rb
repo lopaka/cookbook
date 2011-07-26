@@ -13,3 +13,8 @@ template "/etc/tomcat6/server.xml" do
   owner "root"
   mode "0644"
 end
+
+service "tomcat6" do
+  supports :status => true, :restart => true
+  action [ :enable, :start ]
+end
