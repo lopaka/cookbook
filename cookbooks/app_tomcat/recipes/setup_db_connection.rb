@@ -36,6 +36,7 @@ cookbook_file "/usr/share/tomcat6/lib/jstl-api-1.2.jar" do
   owner "root"
   group "root"
   mode "0644"
+  cookbook "app_tomcat"
 end
 
 cookbook_file "/usr/share/tomcat6/lib/jstl-impl-1.2.jar" do
@@ -43,4 +44,5 @@ cookbook_file "/usr/share/tomcat6/lib/jstl-impl-1.2.jar" do
   owner "root"
   group "root"
   mode "0644"
+  cookbook "app_tomcat"
 end
