@@ -11,7 +11,7 @@ template "/etc/tomcat6/context.xml" do
   mode "0644"
   variables(
     :user      => node[:db_mysql][:application][:user],
-    :ipassword => node[:db_mysql][:application][:password],
+    :password  => node[:db_mysql][:application][:password],
     :fqdn      => node[:db_mysql][:fqdn],
     :database  => node[:tomcat][:db_name]
   )
