@@ -5,12 +5,9 @@ set_unless[:tomcat][:application_name] = "myapp"
 
 # == Optional attributes
 #
-set_unless[:tomcat][:db_schema_name] = ""     
-
 set_unless[:tomcat][:code][:url] = ""
 set_unless[:tomcat][:code][:credentials] = ""
 set_unless[:tomcat][:code][:branch] = "master"  
-set_unless[:tomcat][:modules_list] = [] 
 set_unless[:tomcat][:db_adapter] = "mysql"
 
 # == Calculated attributes

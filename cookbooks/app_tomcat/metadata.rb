@@ -20,18 +20,6 @@ attribute "tomcat",
 #
 # optional attributes
 #
-attribute "tomcat/modules_list",
-  :display_name => "Tomcat modules",
-  :discription => "An optional list of Tomcat modules to install",
-  :type => "array",
-  :recipes => [  "app_tomcat::default" ] 
-
-attribute "tomcat/db_schema_name",
-  :display_name => "Database Schema Name",
-  :description => "Enter the name of the MySQL database schema to which applications will connect.  The database schema was created when the initial database was first set up.  This input will be used to set the application server's database config file so that applications can connect to the correct schema within the database.  This input is also used for MySQL dump backups in order to determine which schema is getting backed up.  Ex: mydbschema",
-  :required => false,
-  :recipes => [ "app_tomcat::setup_db_connection"  ]
-
 attribute "tomcat/db_name",
   :display_name => "Database Name",
   :description => "Enter the name of the MySQL database to use. Ex: mydatabase",

@@ -1,13 +1,6 @@
 # Cookbook Name:: app_tomcat
 # Recipe:: default
 
-# == Install user-specified Packages and Modules
-#
-#[ node[:tomcat][:package_dependencies] | node[:tomcat][:modules_list] ].flatten.each do |p|
-#  package p
-#end
-#
-
 # TODO - changes if not centos (ie ubuntu)
 # TEST - currently only for centos
 case node[:platform]

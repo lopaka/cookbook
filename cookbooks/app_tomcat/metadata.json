@@ -59,32 +59,6 @@
         "description": "Specify the URL location of the repository that contains the application code. Ex: git://github.com/mysite/myapp.git",
         "display_name": "Repository URL"
       },
-      "tomcat/modules_list": {
-        "required": "optional",
-        "calculated": false,
-        "discription": "An optional list of Tomcat modules to install",
-        "choice": [
-
-        ],
-        "type": "array",
-        "recipes": [
-          "app_tomcat::default"
-        ],
-        "display_name": "Tomcat modules"
-      },
-      "tomcat/db_schema_name": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "type": "string",
-        "recipes": [
-          "app_tomcat::setup_db_connection"
-        ],
-        "description": "Enter the name of the MySQL database schema to which applications will connect.  The database schema was created when the initial database was first set up.  This input will be used to set the application server's database config file so that applications can connect to the correct schema within the database.  This input is also used for MySQL dump backups in order to determine which schema is getting backed up.  Ex: mydbschema",
-        "display_name": "Database Schema Name"
-      },
       "tomcat/code/credentials": {
         "required": "optional",
         "calculated": false,
