@@ -66,13 +66,6 @@ when "centos","fedora","suse"
   end
 
 
-  #--------------------
-  # start tomcat6
-  #--------------------
-
-  #service tomcat6 start
-  #
-  #
 else
     log "nothing done yet for non centos"
 end
