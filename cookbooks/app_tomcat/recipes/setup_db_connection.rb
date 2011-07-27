@@ -31,18 +31,20 @@ template "/usr/share/tomcat6/webapps/ROOT/dbread.jsp" do
   mode "0644"
 end
 
-cookbook_file "/usr/share/tomcat6/lib/jstl-api-1.2.jar" do
+# chef 0.8.* uses remote_file, 0.9.* uses cookbook_file
+#cookbook_file "/usr/share/tomcat6/lib/jstl-api-1.2.jar" do
+remote_file "/usr/share/tomcat6/lib/jstl-api-1.2.jar" do
   source "jstl-api-1.2.jar"
   owner "root"
   group "root"
   mode "0644"
-  cookbook "app_tomcat"
 end
 
-cookbook_file "/usr/share/tomcat6/lib/jstl-impl-1.2.jar" do
+# chef 0.8.* uses remote_file, 0.9.* uses cookbook_file
+#cookbook_file "/usr/share/tomcat6/lib/jstl-impl-1.2.jar" do
+remote_file "/usr/share/tomcat6/lib/jstl-impl-1.2.jar" do
   source "jstl-impl-1.2.jar"
   owner "root"
   group "root"
   mode "0644"
-  cookbook "app_tomcat"
 end
