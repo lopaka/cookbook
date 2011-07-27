@@ -3,6 +3,19 @@
     },
     "maintainer": "RightScale, Inc.",
     "attributes": {
+      "tomcat/db_name": {
+        "required": "required",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "string",
+        "recipes": [
+          "app_tomcat::setup_db_connection"
+        ],
+        "description": "Enter the name of the MySQL database to use. Ex: mydatabase",
+        "display_name": "Database Name"
+      },
       "tomcat/code": {
         "required": "optional",
         "calculated": false,

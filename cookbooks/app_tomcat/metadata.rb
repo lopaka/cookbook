@@ -32,6 +32,12 @@ attribute "tomcat/db_schema_name",
   :required => false,
   :recipes => [ "app_tomcat::setup_db_connection"  ]
 
+attribute "tomcat/db_name",
+  :display_name => "Database Name",
+  :description => "Enter the name of the MySQL database to use. Ex: mydatabase",
+  :required => true,
+  :recipes => [ "app_tomcat::setup_db_connection"  ]
+
 attribute "tomcat/code",
   :display_name => "Tomcat Application Code",
   :type => "hash"
